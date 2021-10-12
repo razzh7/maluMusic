@@ -1,0 +1,58 @@
+<view class="index-container">
+    <!-- 轮播图 -->
+    <swiper class="banners" indicator-dots indicator-color="ivory" indicator-active-color="#d43c33" autoplay circular interval="3000">
+        <swiper-item wx:for="{{ bannerList }}" wx:key="bannerId">
+            <image src="{{ item.pic }}"></image>
+        </swiper-item>
+    </swiper>
+    <!-- 导航区域 -->
+    <view class="nav-container">
+        <view class="nav-item">
+            <text class="iconfont icon-meirituijian"></text>
+            <text>每日推荐</text>
+        </view>
+        <view class="nav-item">
+            <text class="iconfont icon-gedan1"></text>
+            <text>歌单</text>
+        </view>
+        <view class="nav-item">
+            <text class="iconfont icon-icon-ranking"></text>
+            <text>排行榜</text>
+        </view>
+        <view class="nav-item">
+            <text class="iconfont icon-diantai"></text>
+            <text>电台</text>
+        </view>
+        <view class="nav-item">
+            <text class="iconfont icon-liveMusic"></text>
+            <text>直播</text>
+        </view>
+    </view>
+    <!-- 推荐歌曲区域 -->
+    <view class="recommend-songs">
+        <navheader title="推荐歌曲" text="为你精心推荐" />
+        <!-- 内容区 -->
+        <scroll-view class="recommend-scroll" scroll-x="true" enable-flex>
+            <view class="songs-wrapper" wx:for="{{ recoomendList }}" wx:key="id">
+                <image src="{{ item.picUrl }}"></image>
+                <view class="mult-txt">{{ item.name }}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- 歌曲排行榜 -->
+    <view class="topRank">
+        <navheader title="排行榜" text="热歌风向标" />
+        <swiper class="hot-songs" next-margin="40rpx">
+            <swiper-item wx:for="{{ hotRank }}" wx:key="name">
+                <view class="top-context">{{ item.name }}</view>
+                <view class="music-item" wx:for="{{ item.tracks }}"  wx:for-item="hot" wx:key="cd">
+                    <image src="{{ hot.al.picUrl }}" class="img"></image>
+                    <text class="count">{{ index + 1}}</text>
+                    <text class="songName">{{ hot.al.name }}</text>
+                    <text>-</text>
+                    <text class="singerName"> {{hot.ar[0].name}}</text>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
