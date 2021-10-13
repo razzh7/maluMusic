@@ -1,1 +1,38 @@
-/* pages/video/video.wxss */
+.video-container {
+    padding: 20rpx;
+}
+.video-container .video-header {
+    display: flex;
+    height: 60rpx;
+}
+.video-container .video-header .search {
+    flex: 1;
+    margin: 0 10rpx;
+    border: 1rpx solid #eeeeee;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    color: #d43c33;
+}
+.video-container .video-header image {
+    width: 60rpx;
+    height: 60rpx;
+}
+/* 导航部分 */
+.video-nav {
+    display: flex;
+    margin-top: 20rpx;
+}
+.video-nav .video-nav-tag{
+    font-size: 30rpx;
+    margin-right: 20rpx;
+}
+.video-nav .video-nav-tag .tag-content {
+    white-space: nowrap;
+}
+.active {
+    font-size: 32rpx;
+    font-weight: bold;
+    border-bottom: 2rpx solid #d43c33;
+}
