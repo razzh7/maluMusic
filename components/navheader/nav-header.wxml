@@ -1,6 +1,8 @@
 <!--components/navheader/nav-header.wxml-->
-<view class="header">{{ title }}</view>
-<view class="feature">
-    <text>{{ text }}</text>
-    <text class="more">查看更多</text>
+<view class="header-nav">
+    <view class="header">{{ title }}</view>
+    <view class="feature">
+        <text>{{ text }}</text>
+        <text class="more">查看更多</text>
+    </view>
 </view>

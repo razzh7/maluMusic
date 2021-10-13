@@ -45,7 +45,7 @@
         <swiper class="hot-songs" next-margin="40rpx">
             <swiper-item wx:for="{{ hotRank }}" wx:key="name">
                 <view class="top-context">{{ item.name }}</view>
-                <view class="music-item" wx:for="{{ item.tracks }}"  wx:for-item="hot" wx:key="cd">
+                <view class="music-item" wx:for="{{ item.tracks }}"  wx:for-item="hot" wx:key="cp">
                     <image src="{{ hot.al.picUrl }}" class="img"></image>
                     <text class="count">{{ index + 1}}</text>
                     <text class="songName">{{ hot.al.name }}</text>
