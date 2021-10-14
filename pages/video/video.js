@@ -1,4 +1,5 @@
 import request from "../../http/http";
+let cache = {}; //数据缓存池
 Page({
 
     /**
@@ -35,19 +36,29 @@ Page({
             this.setData({
                 videoInfo
             })
+            cache[tagId] = this.data.videoInfo;
             wx.hideLoading();
         })
     },
     currTag(e) { // 获取点击标签的id
-        wx.showLoading({  // 加载弹框
-            title: '正在加载',
-          })
         let tagId = e.target.dataset.id;
+        if(!(tagId in cache)) { // cache没找到相对应的标签tagId !(false) = true
+            wx.showLoading({  // 加载弹框
+                title: '正在加载',
+              })
+            this.setData({
+                tagId,
+                videoInfo: []
+            })
+            this.getVideoMain(tagId)
+            // cache["tagId"] = this.data.videoInfo;
+            return;
+        } 
+        //cache中找到了相对应的标签tagId
         this.setData({
-            tagId,
-            videoInfo: []
+            videoInfo: cache[tagId],
+            tagId
         })
-        this.getVideoMain(this.data.tagId);
     },
     handleStop(e) {
         /**
