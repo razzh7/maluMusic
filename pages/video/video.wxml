@@ -8,8 +8,10 @@
     <scroll-view class="video-nav" 
                  enable-flex
                  scroll-x
-                 scroll-y="false">
-        <view class="video-nav-tag" 
+                 scroll-into-view="{{ 'animation' + tagId }}"
+                 scroll-with-animation>
+        <view id="{{ 'animation' + item.id }}"
+              class="video-nav-tag" 
               wx:for="{{ videoTag }}"
               wx:key="id"
               bindtap="currTag"
@@ -26,7 +28,21 @@
         <view class="scrollItem" 
               wx:for="{{ videoInfo }}"
               wx:key="id">
-            <video src="{{ item.data.urlInfo.url }}" class="video"></video>
+            <video id="{{ item.data.vid }}"
+                   src="{{ item.data.urlInfo.url }}" 
+                   class="video"
+                   bindtap="handleStop"
+                   poster="{{ item.data.coverUrl }}" 
+                   wx:if="{{ videoId == item.data.vid }}"
+                   autoplay>
+            </video>
+            <!-- 使用image封面图优化video标签渲染过多导致的视频加载缓慢问题 -->
+            <image id="{{ item.data.vid }}"
+                   src="{{ item.data.coverUrl }}" 
+                   class="video"
+                   bindtap="handleStop" 
+                   wx:else>
+            </image>
             <view class="title">
                 <text>{{ item.data.title }}</text>
             </view>

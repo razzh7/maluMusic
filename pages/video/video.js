@@ -7,7 +7,8 @@ Page({
     data: {
         videoTag: [],
         tagId: '',
-        videoInfo: []
+        videoInfo: [],
+        videoId: ''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -24,12 +25,6 @@ Page({
             this.getVideoMain(this.data.tagId); // 注意不能放在onLoad中，因为getVideoTag是异步任务，这时还没获取到tagId
         })
     },
-    currTag(e) { // 获取点击标签的id
-        let tagId = e.target.dataset.id;
-        this.setData({
-            tagId
-        })
-    },
     getVideoMain(tagId) { // 获取视频主体资源
         request('/video/group',{ id: tagId }).then(res => {
             let index = 0,
@@ -40,7 +35,35 @@ Page({
             this.setData({
                 videoInfo
             })
+            wx.hideLoading();
         })
+    },
+    currTag(e) { // 获取点击标签的id
+        wx.showLoading({  // 加载弹框
+            title: '正在加载',
+          })
+        let tagId = e.target.dataset.id;
+        this.setData({
+            tagId,
+            videoInfo: []
+        })
+        this.getVideoMain(this.data.tagId);
+    },
+    handleStop(e) {
+        /**
+         * 需求：点击另外一个视频后，上一个视频关闭
+         * 思路：1、创建VideoContext实例
+         *      2、挂载VideoContext实例，第二次访问的时候就获取到上一个视频的vid，将可以执行&&后面的stop暂停逻辑
+         *      3、但这个时候第三次点击的时候发现自己的视频播放不了，是因为这个vid是自己的，又有这个实例，所以把自己暂停了
+         *      4、挂载vid，并判断this.vid是否和当前点击的视频vid相同，如果相同，那么就跳过
+         */ 
+        let vid = e.currentTarget.id;
+        this.setData({
+            videoId: vid
+        })
+        // this.vid !== vid && this.videoContext && this.videoContext.stop();
+        // this.vid = vid;
+        this.videoContext = wx.createVideoContext(vid);  //vid必须是video的id属性
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
