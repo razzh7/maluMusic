@@ -1,12 +1,14 @@
 <view class="video-container">
     <view class="video-header">
-        <image src="/static/img/video/video.jpg"></image>
+        <image src="/static/img/video/video.png"></image>
         <view class="search">搜索歌曲</view>
         <image src="/static/img/logo.png"></image>
     </view>
+    <!-- 导航栏区域 -->
     <scroll-view class="video-nav" 
                  enable-flex
-                 scroll-x>
+                 scroll-x
+                 scroll-y="false">
         <view class="video-nav-tag" 
               wx:for="{{ videoTag }}"
               wx:key="id"
@@ -16,6 +18,33 @@
             data-id="{{ item.id }}"
             >
                 {{ item.name }}
+            </view>
+        </view>
+    </scroll-view>
+    <!-- 视频区域 -->
+    <scroll-view class="video-info">
+        <view class="scrollItem" 
+              wx:for="{{ videoInfo }}"
+              wx:key="id">
+            <video src="{{ item.data.urlInfo.url }}" class="video"></video>
+            <view class="title">
+                <text>{{ item.data.title }}</text>
+            </view>
+            <view class="footer">
+                <view>                
+                    <image class="avatar" src="{{ item.data.creator.avatarUrl }}"></image>
+                    <text class="nickname">{{ item.data.creator.nickname }}</text>
+                </view>
+                <view class="comments_praised">
+                    <view class="item">
+                        <text class="iconfont icon-buoumaotubiao15"></text>
+                        <text class="count">{{item.data.praisedCount}}</text>
+                    </view>
+                    <view class="item">
+                        <text class="iconfont icon-pinglun1"></text>
+                        <text class="count">{{item.data.commentCount}}</text>
+                    </view>
+                </view>
             </view>
         </view>
     </scroll-view>

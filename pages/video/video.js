@@ -6,27 +6,42 @@ Page({
      */
     data: {
         videoTag: [],
-        tagId: ''
-    },
-    currTag(e) {
-        let tagId = e.target.dataset.id;
-        console.log(typeof this.data.tagId)
-        this.setData({
-            tagId
-        })
+        tagId: '',
+        videoInfo: []
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.getVideoTag();
+    },
+    getVideoTag() { // 获取视频标签数据
         request('/video/group/list').then(res => {
             this.setData({
                 videoTag: res.data.slice(0,14),
                 tagId: res.data.slice(0,14)[0].id // 拿到第一个数组id以便初次渲染激活第一个tag的active
             })
+            this.getVideoMain(this.data.tagId); // 注意不能放在onLoad中，因为getVideoTag是异步任务，这时还没获取到tagId
         })
     },
-    
+    currTag(e) { // 获取点击标签的id
+        let tagId = e.target.dataset.id;
+        this.setData({
+            tagId
+        })
+    },
+    getVideoMain(tagId) { // 获取视频主体资源
+        request('/video/group',{ id: tagId }).then(res => {
+            let index = 0,
+                videoInfo = res.datas.map(item => {
+                    item.id = index++;
+                    return item;
+                })
+            this.setData({
+                videoInfo
+            })
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

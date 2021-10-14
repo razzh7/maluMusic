@@ -38,7 +38,7 @@ Page({
             })
         }
         // 发送请求
-        request('/login/cellphone',{phone,password}).then(res => {
+        request('/login/cellphone',{phone,password,isLogin: true}).then(res => {
             wx.setStorageSync('userInfo', JSON.stringify(res.profile));
             wx.showToast({
                 title: '正在登陆',
