@@ -34,7 +34,8 @@
                    bindtap="handleStop"
                    poster="{{ item.data.coverUrl }}" 
                    wx:if="{{ videoId == item.data.vid }}"
-                   autoplay>
+                   autoplay
+                   object-fit="fill">
             </video>
             <!-- 使用image封面图优化video标签渲染过多导致的视频加载缓慢问题 -->
             <image id="{{ item.data.vid }}"
