@@ -24,7 +24,7 @@
         </view>
     </scroll-view>
     <!-- 视频区域 -->
-    <scroll-view class="video-info">
+    <scroll-view class="video-info" scroll-y>
         <view class="scrollItem" 
               wx:for="{{ videoInfo }}"
               wx:key="id">
