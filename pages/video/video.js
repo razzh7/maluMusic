@@ -6,10 +6,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-        videoTag: [],
-        tagId: '',
-        videoInfo: [],
-        videoId: ''
+        videoTag: [], // 视频标签数据
+        tagId: '', // 标签id
+        videoInfo: [], //视频主体数据
+        videoId: '', // 缓存视频标签数据
+        isTriggered: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -34,7 +35,8 @@ Page({
                     return item;
                 })
             this.setData({
-                videoInfo
+                videoInfo,
+                isTriggered: false
             })
             cache[tagId] = this.data.videoInfo;
             wx.hideLoading();
@@ -60,7 +62,7 @@ Page({
             tagId
         })
     },
-    handleStop(e) {
+    handleStop(e) { //处理暂停bug
         /**
          * 需求：点击另外一个视频后，上一个视频关闭
          * 思路：1、创建VideoContext实例
@@ -75,6 +77,12 @@ Page({
         // this.vid !== vid && this.videoContext && this.videoContext.stop();
         // this.vid = vid;
         this.videoContext = wx.createVideoContext(vid);  //vid必须是video的id属性
+    },
+    handleRefresh(e) { // 视频下拉刷新
+        this.setData({
+            isTriggered: true //开启下拉动画
+        })
+        this.getVideoMain(this.data.tagId);
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
