@@ -85,13 +85,13 @@
 .icon-zanting:before {
   content:"\e774";
 }
-.icon-bofang:before {
+.icon-song-play:before {
   content:"\e68b";
 }
 .icon-bofang1:before {
   content:"\e601";
 }
-.icon-shangyishou:before {
+.icon-previous-songs:before {
   content:"\e608";
 }
 .icon-zanting1:before {
@@ -100,7 +100,7 @@
 .icon-next:before {
   content:"\e604";
 }
-.icon-iconsMusicyemianbofangmoshiPlayList:before {
+.icon-songs-list:before {
   content:"\e677";
 }
 .icon-iconsMusicyemianbofangmoshiAlrepeatOne:before {
@@ -109,7 +109,7 @@
 .icon-iconsMusicyemianbofangmoshiRepeat:before {
   content:"\e678";
 }
-.icon-iconsMusicyemianbofangmoshiShuffle:before {
+.icon-random-songs:before {
   content:"\e679";
 }
 .icon-myRecommender:before {

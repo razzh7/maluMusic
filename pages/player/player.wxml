@@ -33,11 +33,11 @@
       <!-- 底部控制播放区域 -->
   <view class="musicControl">
     <view class="m-player">
-        <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
-        <text class="iconfont icon-shangyishou" id="pre"></text>
-        <text class="iconfont icon-bofang big"></text>
+        <text class="iconfont icon-random-songs"></text>
+        <text class="iconfont icon-previous-songs" id="pre"></text>
+        <text class="iconfont icon-song-play big"></text>
         <text class="iconfont icon-next"></text>
-        <text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
+        <text class="iconfont icon-songs-list"></text>
     </view>
   </view>
 </view>
