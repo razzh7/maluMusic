@@ -1,0 +1,39 @@
+<view class="recommend-songs">
+    <!-- 头部区域 -->
+    <view class="header">
+        <image src="../../static/images/recommendSong/rebg.jpg"></image>
+        <view class="date">
+            <text class="day">{{ day }}</text>
+            <text class="interval">/</text>
+            <text class="month">{{ month }}</text>
+            <view class="day-luck">查看今日运势</view>
+        </view>
+    </view>
+    <!-- 列表区域 -->
+    <view 
+            class="songs">
+        <view class="list-header">
+            <text class=" iconfont icon-bofang"></text>
+            <text class="allplay">播放全部</text>
+        </view>
+        <view class="songs-list" 
+              wx:for="{{ recommendSongs }}"
+              wx:key="id">
+            <view class="list-main">
+                <view class="left-container">
+                    <view class="img-container">
+                        <image src="{{ item.album.picUrl }}"></image>
+                    </view>
+                    <view class="song-content">
+                        <view class="songs-name">{{ item.name }}</view>
+                        <view class="author">{{ item.artists[0].name }}</view>
+                    </view>
+                </view>
+                <view class="play">
+                    <text class=" iconfont icon-bofang"></text>
+                </view>
+            </view>
+        </view>
+
+    </view >
+</view>

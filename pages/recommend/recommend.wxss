@@ -1,0 +1,96 @@
+@import "../../static/iconfont/iconfont.wxss";
+
+/* 头部区域 */
+page {
+    background-color: #ffffff;
+}
+.recommend-songs .header{
+    position: relative;
+    width: 100%;
+    height: 350rpx;
+}
+.recommend-songs .header image {
+    width: 100%;
+    height: 100%;
+}
+.recommend-songs .header .date {
+    position: absolute;
+    left: 40rpx;
+    bottom: 50rpx;
+    font-size: 26rpx;
+    font-weight: bold;
+    color: #ffffff;
+}
+.recommend-songs .header .date .day {
+    font-size: 60rpx;
+}
+.recommend-songs .header .date .interval {
+    margin: 0 10rpx;
+}
+.recommend-songs .header .date .day-luck {
+    font-weight: normal;
+    font-size: 26rpx;
+}
+/* 列表区域 */
+.songs {
+    position: relative;
+    top: -35rpx;
+    width: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+    background-color: #ffffff;
+   border-top-left-radius: 40rpx;
+   border-top-right-radius: 40rpx;
+}
+.songs .list-header {
+    margin-bottom: 50rpx;
+}
+.songs .list-header .icon-bofang {
+    font-size: 36rpx;
+    vertical-align: middle;
+}
+.songs .allplay {
+    margin-left: 20rpx;
+    font-size: 26rpx;
+}
+.songs-list .list-main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.songs-list .list-main .left-container {
+    display: flex;
+    width: 100%;
+    height: 100rpx;
+}
+
+.songs-list .list-main .img-container {
+    width: 100rpx;
+    height: 100rpx;
+}
+.songs-list .list-main .img-container image {
+    width: 100%;
+    height: 100%;
+}
+.songs-list .list-main .song-content {
+    flex: 1;
+    line-height: 40rpx;
+    margin-left: 20rpx;
+    font-size: 26rpx;
+}
+.songs-list .list-main .song-content .songs-name {
+    max-width: 500rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.songs-list .list-main .song-content .author {
+    font-size: 20rpx;
+}
+.songs-list .list-main .play {
+    display: flex;
+    align-items: center;
+}
+.songs-list .list-main .play .icon-bofang {
+    font-size: 50rpx;
+}

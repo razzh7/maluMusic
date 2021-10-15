@@ -12,7 +12,26 @@ Page({
         hotRank: [],
         test: '234'
     },
-
+    toRecommend() {
+        // 判断用户是否登录
+        let userInfo = wx.getStorageSync('userInfo');
+        if(!userInfo) { // 如果用户未登录
+            wx.showToast({
+              title: '请先登录',
+              icon: 'loading',
+              duration: 1000,
+              success: setTimeout(() => {
+                wx.navigateTo({
+                  url: '/pages/login/login',
+                })
+            },1000)
+            })
+            return;
+        }
+        wx.navigateTo({
+            url: '/pages/recommend/recommend'
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
