@@ -1,0 +1,199 @@
+@import "/static/iconfont/iconfont.wxss";
+/* 背景部分 */
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 640rpx;
+    overflow: hidden;
+}
+
+.root .m-song-bg {
+    background-color: #161824;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    transform: scale(1.5);
+    transform-origin: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 100%;
+    overflow: hidden;
+    /* background-image: url(http://p1.music.126.net/KS0TddHKX8c3atG3CkmdUw==/109951166264542938.jpg?imageView&thumbnail=50y50&quality=15&tostatic=0); */
+    filter: blur(60rpx);
+}
+
+.shade {  /*遮罩层下半部分*/
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0), #000);
+}
+/* 评论部分 */
+.m-songs-scroll .m-song-disc .m-comment {
+    position: relative;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 66rpx;
+    padding: 10rpx 0;
+}
+.m-songs-scroll .m-song-disc .m-comment .m-comment-downline {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    border-bottom: 1px solid hsla(0,0%,100%,.2);
+    font-size: 24rpx;
+    color: #ffffff;
+}
+.m-songs-scroll .m-song-disc .m-comment .m-comment-downline image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+.m-songs-scroll .m-song-disc .m-comment .m-comment-downline .info {
+    flex: 1;
+    padding-left: 20rpx;
+}
+.m-songs-scroll .m-song-disc .m-comment .m-comment-downline .m-open-comment {
+    width: 150rpx;
+    padding: 7rpx;
+    border: 1px solid hsla(0,0%,100%,.2);
+    border-radius: 30rpx;
+    font-size: 24rpx;
+    text-align: center;
+}
+.m-songs-scroll .m-song-disc .m-comment .m-comment-downline .m-open-comment .icn {
+    width: 20rpx;
+    height: 20rpx;
+    vertical-align: middle;
+    margin-left: 10rpx;
+    color: #ffffff;
+}
+/* noodle部分 */
+.m-songs-scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 400rpx;
+    z-index: 4;
+}
+.m-songs-scroll::before { /*遮罩层上半部分*/
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 186rpx;
+    background-image: linear-gradient(180deg, rgba(0,0,0,.5),rgba(0,0,0,0));
+}
+.m-songs-scroll .m-song-disc .m-song-noodle .noodle{
+    position: relative;
+    z-index: 5;
+    top: -30rpx;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    transform: translate3d(-30%,0,0);
+    width: 150rpx;
+    height: 240rpx;
+    transform: rotate(-30deg);
+    transform-origin: 40rpx 0;
+    transition: transform 1s;
+}
+.m-songs-scroll .m-song-disc .m-song-noodle .noodle.activeRotate {
+    transform: rotate(-5deg);
+}
+.m-songs-scroll .m-song-disc .m-song-trun {
+    position: relative;
+    top: -200rpx;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    margin-left: -270rpx; /* 这边不用translate:transform:的原因是跟旋转动画冲突导致播放动画时移位了;*/
+    width: 540rpx;
+    height: 540rpx;
+}
+.animationCricle {
+    animation: rotateCricle 6s linear infinite;
+    animation-delay: 1s; /* 等到指针落到磁盘上磁盘开始转动*/
+}
+@keyframes rotateCricle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.m-songs-scroll .m-song-disc .m-song-trun .ciricle {
+    width: 100%;
+    height: 100%;
+}
+.m-songs-scroll .m-song-disc .m-song-trun .song-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 402rpx;
+    height: 402rpx;
+    border-radius: 50%;
+}
+/* 歌手-歌曲名部分 */
+.m-song-info {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    transform: translate3d(-50%,0,0);
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+}
+.m-song-info .m-singer {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #ffffff;
+}
+.m-song-info .m-gap {
+    font-size: 32rpx;
+    color: #ffffff;
+}
+.m-song-info .m-song-name {
+    font-size: 32rpx;
+    color: hsla(0,0%,100%,.6);
+}
+/* 底部控制播放区域 */
+.musicControl {
+    position: absolute;
+    bottom: 60rpx;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 300rpx;
+}
+.musicControl .m-player {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    border-top: 2rpx solid hsla(0,0%,100%,.6);
+}
+.musicControl .m-player .iconfont {
+    color: #ffffff;
+}

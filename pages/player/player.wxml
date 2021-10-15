@@ -1,0 +1,43 @@
+<view class="root">
+    <view class="m-song-bg" style="background-image: url({{backgroundImage}})"></view>
+    <view class="shade"></view>
+    <view class="m-songs-scroll">
+        <view class="m-song-disc">
+            <view class="m-comment">
+                <view class="m-comment-downline">
+                    <image src="{{ song.album.picUrl }}"></image>
+                    <text class="info">你知道这首歌居然被这么评论？</text> 
+                    <view class="m-open-comment">
+                        <text class="txt">打开看看</text>
+                        <image class="icn" src="data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxOCAzMiIgdmlld0JveD0iMCAwIDE4IDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0xNjYuNzc3IDU3LjkzOWMtLjU4Ni41ODYtLjU4NiAxLjUzNiAwIDIuMTIxLjU4Ni41ODYgMS41MzYuNTg2IDIuMTIxIDBsMTQtMTRjLjU4Ni0uNTg2LjU4Ni0xLjUzNiAwLTIuMTIxbC0xNC0xNGMtLjU4Ni0uNTg2LTEuNTM2LS41ODYtMi4xMjEgMC0uNTg2LjU4Ni0uNTg2IDEuNTM2IDAgMi4xMjFsMTIuOTQgMTIuOTR6IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE2NiAtMjkpIi8+PC9zdmc+"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="m-song-noodle">
+                <image 
+                src="/static/images/song/noodle.png"
+                class="noodle {{ isPlay ? 'activeRotate' : ''}}">
+                </image>
+            </view>
+            <view class="m-song-trun {{ isPlay ? 'animationCricle' : ''}}">
+                <image src="/static/images/song/cricle.png" class="ciricle"></image>
+                <image src="{{ song.album.picUrl }}" class="song-img"></image>
+            </view>
+            <view class="m-song-info">
+                <text class="m-singer">{{ song.artists[0].name }}</text>
+                <text class="m-gap">-</text>
+                <text class="m-song-name">{{ song.name }}</text>
+            </view>
+        </view>
+    </view>
+      <!-- 底部控制播放区域 -->
+  <view class="musicControl">
+    <view class="m-player">
+        <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
+        <text class="iconfont icon-shangyishou" id="pre"></text>
+        <text class="iconfont icon-bofang big"></text>
+        <text class="iconfont icon-next"></text>
+        <text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
+    </view>
+  </view>
+</view>

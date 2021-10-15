@@ -1,41 +1,27 @@
-// pages/recommend/recommend.js
-import request from "../../http/http";
+// pages/player/player.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        day: '',
-        month: '',
-        recommendSongs: [],
+        // backgroundImage: 'http://p1.music.126.net/KS0TddHKX8c3atG3CkmdUw==/109951166264542938.jpg?imageView&thumbnail=50y50&quality=15&tostatic=0',
+        backgroundImage: '',
+        isPlay: false,
+        song: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    getRecommendSongs() {
-        request('/recommend/songs').then(res => {
-            this.setData({
-                recommendSongs: res.recommend
-            })
-        })
-    },
-    toMusicPlayer(e) {
-        let song = e.currentTarget.dataset.song;
-        wx.navigateTo({
-            url: "/pages/player/player",
-            success: (res) => {
-                res.eventChannel.emit('songData',song); // 传递对应id的数据给播放页面
-            }
-        })
-    },
     onLoad: function (options) {
-        this.setData({
-            day: new Date().getDate(),
-            month: new Date().getMonth() + 1
-        })
-        this.getRecommendSongs(); // 获取每日推荐数据
+        const eventChannel = this.getOpenerEventChannel()
+        eventChannel.on('songData', (data) => {
+            this.setData({
+                song: data,
+                backgroundImage: data.album.blurPicUrl
+            })
+        })        
     },
 
     /**
