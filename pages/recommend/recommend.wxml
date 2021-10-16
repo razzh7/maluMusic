@@ -20,7 +20,8 @@
               wx:for="{{ recommendSongs }}"
               wx:key="id"
               bindtap="toMusicPlayer"
-              data-song="{{ item }}">
+              data-song="{{ item }}"
+              data-index="{{ index }}">
             <view class="list-main">
                 <view class="left-container">
                     <view class="img-container">

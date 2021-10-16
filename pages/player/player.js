@@ -6,14 +6,14 @@ Page({
      * 页面的初始数据
      */
     data: {
-        backgroundImage: '',
-        isPlay: false,
-        song: [],
-        songUrl: '',
-        checkSongId: ''
+        backgroundImage: '', // 背景图片
+        isPlay: false, // 控制播放状态标识
+        song: [], // 歌曲详情
+        songUrl: '', // 歌曲播放url地址
+        checkSongId: '', // 校验是否是同一首歌，用于监听状态
+        songIndex: '' // 歌曲数组下标 （用于切换歌曲）
     },
     mannerPlayInGobal() { // 管理系统后台状态
-        console.log('2')  
         this.backgroundAudioManager = wx.getBackgroundAudioManager();  // 创建全局音频播放管理器
         this.backgroundAudioManager.onPlay(() => { // 监听后台是否点击播放
             this.controlPlay(true);
@@ -43,7 +43,7 @@ Page({
             this.backgroundAudioManager.play(); // 继续播放
         }
     },
-    getSongUrl(id) { // 获取歌词id
+    getSongUrl(id) { // 获取歌曲url
         request('/song/url',{id}).then(res => {
             this.setData({
                 songUrl: res.data[0].url
@@ -56,13 +56,15 @@ Page({
      */
     onLoad: function (options) {
         const eventChannel = this.getOpenerEventChannel()
-        eventChannel.on('songData', (data) => {
+        eventChannel.on('songData', (data) => { // 监听recommend传进来的数据
+            console.log(data)
             this.setData({
-                song: data,
-                backgroundImage: data.album.blurPicUrl,
-                checkSongId: data.id
+                song: data.song,
+                backgroundImage: data.song.album.blurPicUrl,
+                checkSongId: data.song.id,
+                songIndex: data.songIndex
             })
-            this.getSongUrl(data.id); // 获取歌曲url 
+            this.getSongUrl(data.song.id); // 获取歌曲url 
             this.mannerPlayInGobal(); // 管理系统后台状态     
         })
 
@@ -72,9 +74,33 @@ Page({
             this.setData({
                 isPlay: true
             })
-            this.backgroundAudioManager.src = this.data.songUrl;
-            this.backgroundAudioManager.title = this.data.song.name;
+            this.setAudioSrc(this.data.songUrl,this.data.song.name);
+            return;
         }
+        this.setAudioSrc(this.data.songUrl,this.data.song.name);
+    },
+    setAudioSrc(src,title) {
+        this.backgroundAudioManager.src = src;
+        this.backgroundAudioManager.title = title;
+    },
+    triggleSongs(e) { // 切换歌曲
+        /**
+         * 思路：
+         * 来源获取index
+         * 通过点击上一首下一首向来源传递pre/next字段
+         * 来源接受到pre/next字段后通过判断，再把找到数组中index+1的数据存入Storage
+         * player取出Storage中的数据就是下一首/上一首的歌曲
+         */
+        let type = e.currentTarget.id; //获取切换类型
+            // songIndex = this.data.songIndex;
+        const eventChannel = this.getOpenerEventChannel();
+        eventChannel.emit('triggleType', {type});
+        let songDatas = JSON.parse(wx.getStorageSync('songData'));
+        console.log(songDatas);
+        this.setData({
+            song: songDatas,
+        })
+        this.getSongUrl(this.data.song.id);
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

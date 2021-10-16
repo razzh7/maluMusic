@@ -22,6 +22,5 @@ export default {
             str += key + cookies[key] + '; '
         }
         return str;
-    },
-
+    }
 }

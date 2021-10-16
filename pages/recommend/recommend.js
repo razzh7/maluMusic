@@ -1,5 +1,6 @@
 // pages/recommend/recommend.js
 import request from "../../http/http";
+import utils from "../../utils/utils";
 Page({
 
     /**
@@ -22,11 +23,27 @@ Page({
         })
     },
     toMusicPlayer(e) {
-        let song = e.currentTarget.dataset.song;
+        let song = e.currentTarget.dataset.song,
+            index = e.currentTarget.dataset.index;
         wx.navigateTo({
             url: "/pages/player/player",
+            events: {
+                triggleType: (data) => {
+                    if(data.type === 'next') {
+                        index += 1;
+                    } else if(data.type === 'pre') {
+                        index -= 1;
+                    }
+                    let songDatas = this.data.recommendSongs[index];
+                    try {
+                        wx.setStorageSync('songData', JSON.stringify(songDatas))
+                    } catch(err) {
+                        console.log(err);
+                    }
+                }
+            },
             success: (res) => {
-                res.eventChannel.emit('songData',song); // 传递对应id的数据给播放页面
+                res.eventChannel.emit('songData',{song, index}); // 传递对应音乐数组下标的数据给播放页面
             }
         })
     },

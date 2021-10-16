@@ -34,9 +34,9 @@
   <view class="musicControl">
     <view class="m-player">
         <text class="iconfont icon-random-songs"></text>
-        <text class="iconfont icon-previous-songs" id="pre"></text>
+        <text class="iconfont icon-previous-songs" id="pre" bindtap="triggleSongs"></text>
         <text class="iconfont  big {{ isPlay ? 'icon-pause' : 'icon-song-play'}}" bindtap="handlePlay"></text>
-        <text class="iconfont icon-next"></text>
+        <text class="iconfont icon-next" id="next" bindtap="triggleSongs"></text>
         <text class="iconfont icon-songs-list"></text>
     </view>
   </view>
