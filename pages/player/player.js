@@ -6,13 +6,14 @@ Page({
      * 页面的初始数据
      */
     data: {
-        // backgroundImage: 'http://p1.music.126.net/KS0TddHKX8c3atG3CkmdUw==/109951166264542938.jpg?imageView&thumbnail=50y50&quality=15&tostatic=0',
         backgroundImage: '',
         isPlay: false,
         song: [],
-        songUrl: ''
+        songUrl: '',
+        checkSongId: ''
     },
     mannerPlayInGobal() { // 管理系统后台状态
+        console.log('2')  
         this.backgroundAudioManager = wx.getBackgroundAudioManager();  // 创建全局音频播放管理器
         this.backgroundAudioManager.onPlay(() => { // 监听后台是否点击播放
             this.controlPlay(true);
@@ -20,7 +21,7 @@ Page({
         this.backgroundAudioManager.onPause(() => {  // 监听后台是否点击暂停
             this.controlPlay(false);
         })
-        BackgroundAudioManager.onStop(() => { // 监听微信背景音频是否关闭
+        this.backgroundAudioManager.onStop(() => { // 监听微信背景音频是否关闭
             this.controlPlay(false);
         })
     },
@@ -29,23 +30,25 @@ Page({
             isPlay: bool
         })
     },
-    handlePlay() {
+    handlePlay() { // 点击按钮切换播放状态
         let isPause = !this.data.isPlay; // 播放暂停切换
+        
         this.setData({
             isPlay: isPause
         })
-        this.backgroundAudioManager.src = this.data.songUrl;
-        this.backgroundAudioManager.title = this.data.song.name;
-        if(!isPause) { // 播放暂停
-            this.backgroundAudioManager.pause();
+
+        if(!isPause) { 
+            this.backgroundAudioManager.pause(); // 播放暂停
+        } else {
+            this.backgroundAudioManager.play(); // 继续播放
         }
     },
-    getSongUrl(id) {
+    getSongUrl(id) { // 获取歌词id
         request('/song/url',{id}).then(res => {
-            console.log(res);
             this.setData({
                 songUrl: res.data[0].url
             })
+            this.startPlay(); //拿到歌词url后直接开始播放
         })
     },
     /**
@@ -56,13 +59,23 @@ Page({
         eventChannel.on('songData', (data) => {
             this.setData({
                 song: data,
-                backgroundImage: data.album.blurPicUrl
+                backgroundImage: data.album.blurPicUrl,
+                checkSongId: data.id
             })
             this.getSongUrl(data.id); // 获取歌曲url 
-            this.mannerPlayInGobal(); // 管理系统后台状态      
+            this.mannerPlayInGobal(); // 管理系统后台状态     
         })
-    },
 
+    },
+    startPlay() { // 进来就开始播放音乐
+        if(this.data.checkSongId == this.data.song.id) {
+            this.setData({
+                isPlay: true
+            })
+            this.backgroundAudioManager.src = this.data.songUrl;
+            this.backgroundAudioManager.title = this.data.song.name;
+        }
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

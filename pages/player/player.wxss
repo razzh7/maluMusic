@@ -157,8 +157,8 @@
     right: 0;
     bottom: 0;
     margin: auto;
-    width: 402rpx;
-    height: 402rpx;
+    width: 368rpx;
+    height: 347rpx;
     border-radius: 50%;
 }
 /* 歌手-歌曲名部分 */
