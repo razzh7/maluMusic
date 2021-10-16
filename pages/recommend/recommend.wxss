@@ -45,7 +45,7 @@ page {
 .songs .list-header {
     margin-bottom: 50rpx;
 }
-.songs .list-header .icon-bofang {
+.songs .list-header .icon-song-play {
     font-size: 36rpx;
     vertical-align: middle;
 }
@@ -91,6 +91,6 @@ page {
     display: flex;
     align-items: center;
 }
-.songs-list .list-main .play .icon-bofang {
+.songs-list .list-main .play .icon-song-play {
     font-size: 50rpx;
 }
