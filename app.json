@@ -1,9 +1,9 @@
 {
     "pages": [
-        "pages/player/player",
-        "pages/video/video",
-        "pages/index/index",
         "pages/recommend/recommend",
+        "pages/player/player",
+        "pages/index/index",
+        "pages/video/video",
         "pages/login/login",
         "pages/personal/personal"
     ],
@@ -38,6 +38,7 @@
             }
         ]
     },
+    "requiredBackgroundModes": ["audio"],
     "style": "v2",
     "sitemapLocation": "sitemap.json"
 }

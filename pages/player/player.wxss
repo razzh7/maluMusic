@@ -127,7 +127,7 @@
     height: 540rpx;
 }
 .animationCricle {
-    animation: rotateCricle 6s linear infinite;
+    animation: rotateCricle 8s linear infinite;
     animation-delay: 1s; /* 等到指针落到磁盘上磁盘开始转动*/
 }
 @keyframes rotateCricle {
@@ -137,6 +137,14 @@
     to {
         transform: rotate(360deg);
     }
+}
+.animationPlay {  /* 控制动画播放 */
+    animation: rotateCricle 8s linear infinite;
+    animation-play-state: running;
+}
+.animationPause {  /* 控制动画暂停 */
+    animation: rotateCricle 8s linear infinite;
+    animation-play-state: paused;
 }
 .m-songs-scroll .m-song-disc .m-song-trun .ciricle {
     width: 100%;
@@ -208,6 +216,7 @@
 .icon-previous-songs,
 .icon-song-play,
 .icon-next,
+.icon-pause,
 .icon-songs-list {
     font-size: 60rpx;
 }

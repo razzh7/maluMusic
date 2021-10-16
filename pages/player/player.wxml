@@ -19,7 +19,7 @@
                 class="noodle {{ isPlay ? 'activeRotate' : ''}}">
                 </image>
             </view>
-            <view class="m-song-trun {{ isPlay ? 'animationCricle' : ''}}">
+            <view class="m-song-trun {{ isPlay ? 'animationCricle animationPlay' : 'animationPause'}}">
                 <image src="/static/images/song/cricle.png" class="ciricle"></image>
                 <image src="{{ song.album.picUrl }}" class="song-img"></image>
             </view>
@@ -35,7 +35,7 @@
     <view class="m-player">
         <text class="iconfont icon-random-songs"></text>
         <text class="iconfont icon-previous-songs" id="pre"></text>
-        <text class="iconfont icon-song-play big"></text>
+        <text class="iconfont  big {{ isPlay ? 'icon-pause' : 'icon-song-play'}}" bindtap="handlePlay"></text>
         <text class="iconfont icon-next"></text>
         <text class="iconfont icon-songs-list"></text>
     </view>
