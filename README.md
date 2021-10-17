@@ -10,14 +10,12 @@ https://github.com/Binaryify/NeteaseCloudMusicApi/tree/v3.25.4
 + 播放页✔
 
 ![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/index.gif)
-
+![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/player1.gif)
 ![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/video1.gif)
-
 ![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/video2.gif)
-
 ![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/mine.gif)
 
-![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/player.gif)
+
 
 
 
