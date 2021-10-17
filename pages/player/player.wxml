@@ -36,7 +36,7 @@
         <text class="current-time">{{ currentTime }}</text>
         <view class="process">
             <!-- 实时进度条 -->
-            <view class="live-process" style="width:{{ processWidth + 'rpx'}}"></view>
+            <view class="live-process" style="width:{{ processWidth + 'rpx' }}"></view>
             <!-- 小圆点 -->
             <view class="dot"></view>
         </view>

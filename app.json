@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/recommend/recommend",
         "pages/index/index",
+        "pages/recommend/recommend",
         "pages/player/player",
         "pages/video/video",
         "pages/login/login",

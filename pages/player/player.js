@@ -16,14 +16,16 @@ Page({
         currentTime: '0:00',
         durationTime: '',
         processWidth: 0, // 进度条长度
+        isunLoad: false,
+        duration: 0
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log('onload',this.data.processWidth)
         this.setData({
             currentTime: '0:00', // 首先初始化开始进度条
-            processWidth: 0
         })
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('songData', (data) => { // 监听recommend传进来的数据
@@ -32,7 +34,7 @@ Page({
                 backgroundImage: data.song.album.blurPicUrl,
                 checkSongId: data.song.id,
                 songIndex: data.songIndex,
-                durationTime: utils.millisToMinutesAndSeconds(data.song.duration) //格式化时间min:s
+                durationTime: utils.millisToMinutesAndSeconds(data.song.duration), //格式化时间min:s
             })
             this.getSongUrl(data.song.id); // 获取歌曲url 
             this.mannerPlayInGobal(); // 管理系统后台状态     
@@ -50,19 +52,9 @@ Page({
         this.backgroundAudioManager.onStop(() => { // 监听微信背景音频是否关闭
             this.controlPlay(false);
         })
-        this.backgroundAudioManager.onTimeUpdate(utils.throttle(() => { // 监听背景音频播放进度更新事件
-            let currentTime = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.currentTime),
-                duration = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.duration),
-                processWidth = (this.backgroundAudioManager.currentTime / this.backgroundAudioManager.duration) * 542
-            this.setData({
-                currentTime,
-                duration,
-                processWidth
-            })
-        },800))
+
         this.backgroundAudioManager.onEnded(() => { // 监听音频是否结束
-            console.log('onEnded')
-            this.wacther('next');
+            this.wacther('next'); // 调用下一首歌曲
         })
     },
     controlPlay(bool) { // 控制播放状态
@@ -88,11 +80,21 @@ Page({
             this.setData({
                 songUrl: res.data[0].url
             })
+            this.backgroundAudioManager.onTimeUpdate(utils.throttle(() => { // 监听背景音频播放进度更新事件
+                let currentTime = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.currentTime),
+                    duration = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.duration),
+                    processWidth = (this.backgroundAudioManager.currentTime / this.backgroundAudioManager.duration) * 542 // 计算进度条
+                this.setData({
+                    currentTime,
+                    duration,
+                    processWidth
+                })
+            },800))
             this.startPlay(); // 拿到歌词url后直接开始播放
         })
     },
     startPlay() { // 进来就开始播放音乐
-        if(this.data.checkSongId == this.data.song.id) {
+        if(this.data.checkSongId === this.data.song.id) {
             this.setData({
                 isPlay: true
             })
@@ -118,7 +120,7 @@ Page({
     },
     wacther(type) {
         const eventChannel = this.getOpenerEventChannel();
-        eventChannel.emit('triggleType', {type});
+        eventChannel.emit('triggleType', {type}); // 页面通信：发出triggleType事件，recommend.js页面接收
         let songDatas = JSON.parse(wx.getStorageSync('songData')),
             currentTime = '0:00',
             durationTime = utils.millisToMinutesAndSeconds(songDatas.duration);
@@ -134,28 +136,29 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        this.setData({
+            currentTime: 0,
+            processWidth: 0,
+            duration: 0
+        })
     },
 
     /**
