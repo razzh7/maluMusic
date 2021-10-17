@@ -128,6 +128,7 @@ Page({
             song: songDatas,
             currentTime,
             durationTime,
+            backgroundImage: songDatas.album.blurPicUrl,
             processWidth: 0
         })
         this.getSongUrl(this.data.song.id);
