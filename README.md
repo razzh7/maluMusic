@@ -7,10 +7,17 @@ https://github.com/Binaryify/NeteaseCloudMusicApi/tree/v3.25.4
 + 主页部分✔
 + 登录部分✔
 + 每日推荐✔
++ 播放页✔
 
-## 下一阶段
-音乐播放器
+![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/index.gif)
 
-1、解决播放暂停后不能继续播放问题
+![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/video1.gif)
 
-2、解决播放后切换回播放页面状态丢失
+![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/video2.gif)
+
+![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/mine.gif)
+
+![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/player.gif)
+
+
+
