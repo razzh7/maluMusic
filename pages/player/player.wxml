@@ -32,6 +32,16 @@
     </view>
       <!-- 底部控制播放区域 -->
   <view class="musicControl">
+    <view class="time">
+        <text class="current-time">{{ currentTime }}</text>
+        <view class="process">
+            <!-- 实时进度条 -->
+            <view class="live-process" style="width:{{ processWidth + 'rpx'}}"></view>
+            <!-- 小圆点 -->
+            <view class="dot"></view>
+        </view>
+        <text class="duration-time">{{ durationTime }}</text>
+    </view>
     <view class="m-player">
         <text class="iconfont icon-random-songs"></text>
         <text class="iconfont icon-previous-songs" id="pre" bindtap="triggleSongs"></text>
@@ -39,5 +49,6 @@
         <text class="iconfont icon-next" id="next" bindtap="triggleSongs"></text>
         <text class="iconfont icon-songs-list"></text>
     </view>
+
   </view>
 </view>

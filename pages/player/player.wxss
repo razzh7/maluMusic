@@ -190,17 +190,17 @@
 /* 底部控制播放区域 */
 .musicControl {
     position: absolute;
-    bottom: 40rpx;
+    bottom: 0;
     left: 0;
     z-index: 10;
     width: 100%;
-    height: 200rpx;
+    height: 260rpx;
 }
 .musicControl .m-player {
     width: 90%;
     height: 100%;
     margin: 0 auto;
-    border-top: 2rpx solid hsla(0,0%,100%,.6);
+    /* border-top: 2rpx solid hsla(0,0%,100%,.6); */
 }
 .musicControl .m-player .iconfont {
     display: inline-block;
@@ -224,4 +224,37 @@
     position: relative;
     top: 15rpx;
     font-size: 100rpx;
+}
+.musicControl {
+    margin: 0 auto;
+}
+/* 进度条部分 */
+.musicControl .time {
+    display: flex;
+    padding: 0 30rpx;
+    color: hsla(0,0%,100%,.6);
+    font-size: 20rpx;
+
+}
+.musicControl .time .process {
+    display: flex;
+    width: 80%;
+    height: 4rpx;
+    background-color: hsla(0,0%,100%,.6);
+    margin: auto;
+}
+.musicControl .time .process .live-process {
+    height: 100%;
+    background-color: hsla(0,0%,100%,.8);
+}
+.musicControl .time .process .dot {
+    content: '';
+    position: relative;
+    top: -8rpx;
+    display: inline-block;
+    width: 20rpx;
+    height: 20rpx;
+    margin: auto 0;
+    border-radius: 50%;
+    background-color: #ffffff;
 }

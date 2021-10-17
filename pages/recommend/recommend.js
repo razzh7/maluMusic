@@ -1,6 +1,6 @@
 // pages/recommend/recommend.js
 import request from "../../http/http";
-import utils from "../../utils/utils";
+
 Page({
 
     /**
