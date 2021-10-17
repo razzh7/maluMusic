@@ -23,6 +23,7 @@ Page({
     onLoad: function (options) {
         this.setData({
             currentTime: '0:00', // 首先初始化开始进度条
+            processWidth: 0
         })
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('songData', (data) => { // 监听recommend传进来的数据
@@ -87,7 +88,7 @@ Page({
             this.setData({
                 songUrl: res.data[0].url
             })
-            this.startPlay(); //拿到歌词url后直接开始播放
+            this.startPlay(); // 拿到歌词url后直接开始播放
         })
     },
     startPlay() { // 进来就开始播放音乐
@@ -124,7 +125,8 @@ Page({
         this.setData({
             song: songDatas,
             currentTime,
-            durationTime
+            durationTime,
+            processWidth: 0
         })
         this.getSongUrl(this.data.song.id);
     },
