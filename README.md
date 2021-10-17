@@ -1,5 +1,5 @@
 # maluMusic
-原生微信小程序仿网易云音乐
+原生微信小程序仿网易云音乐<br>
 后端接口使用`NeteaseCloudMusicApi`，版本`3.25.4`
 https://github.com/Binaryify/NeteaseCloudMusicApi/tree/v3.25.4
 ## 完成情况
