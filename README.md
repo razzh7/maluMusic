@@ -8,7 +8,8 @@ https://github.com/Binaryify/NeteaseCloudMusicApi/tree/v3.25.4
 + 主页部分✔
 + 登录部分✔
 + 每日推荐✔
-+ 播放页✔
++ 播放页✔<br>
+后期会添加搜索模块,未完待续~
 
 ![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/index.gif)
 ![avatar](https://github.com/rzhAvenir/maluMusic/blob/master/img/player1.gif)
