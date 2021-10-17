@@ -10,7 +10,8 @@ Page({
         bannerList: [],
         recommendList: [],
         hotRank: [],
-        test: '234'
+        loading: true,
+        isShow: false
     },
     toRecommend() {
         // 判断用户是否登录
@@ -70,8 +71,16 @@ Page({
                 hotRank: hotArr
             })
         })
+        this.disposableLoad(); // 显示骨架屏
     },
-
+    disposableLoad() {
+        setTimeout(() => {
+            this.setData({
+                loading: false,
+                isShow: true
+            })
+        }, 2000)
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

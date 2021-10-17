@@ -1,6 +1,14 @@
-<view class="index-container">
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}"/>
+
+<view class="index-container" hidden="{{ !isShow }}">
     <!-- 轮播图 -->
-    <swiper class="banners" indicator-dots indicator-color="ivory" indicator-active-color="#d43c33" autoplay circular interval="3000">
+    <swiper class="banners" 
+            indicator-dots 
+            indicator-color="ivory" 
+            indicator-active-color="#d43c33" 
+            autoplay circular 
+            interval="3000">
         <swiper-item wx:for="{{ bannerList }}" wx:key="bannerId">
             <image src="{{ item.pic }}"></image>
         </swiper-item>

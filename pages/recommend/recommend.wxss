@@ -1,4 +1,5 @@
 @import "../../static/iconfont/iconfont.wxss";
+@import "recommend.skeleton.wxss";
 
 /* 头部区域 */
 page {
@@ -85,6 +86,8 @@ page {
     text-overflow: ellipsis;
 }
 .songs-list .list-main .song-content .author {
+    width: 500rpx;
+    margin-top: 15rpx;
     font-size: 20rpx;
 }
 .songs-list .list-main .play {

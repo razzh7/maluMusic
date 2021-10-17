@@ -21,6 +21,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            currentTime: '0:00', // 首先初始化开始进度条
+        })
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('songData', (data) => { // 监听recommend传进来的数据
             this.setData({

@@ -73,5 +73,12 @@
         "miniprogram": {
             "list": []
         }
+    },
+    "skeleton-config": {
+        "global": {
+            "text": {
+                "backgroundColor": "#EEEEEE"
+            }
+        }
     }
 }

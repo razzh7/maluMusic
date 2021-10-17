@@ -10,6 +10,9 @@ Page({
         day: '',
         month: '',
         recommendSongs: [],
+        loading: true,
+        hiddenHeader: false, // 显示头部模块
+        hiddenSongs: false // 显示歌曲模块
     },
 
     /**
@@ -20,6 +23,7 @@ Page({
             this.setData({
                 recommendSongs: res.recommend
             })
+            this.disposableLoad(); // 显示骨架屏
         })
     },
     toMusicPlayer(e) {
@@ -54,7 +58,15 @@ Page({
         })
         this.getRecommendSongs(); // 获取每日推荐数据
     },
-
+    disposableLoad() { // 2s之后显示主界面
+        setTimeout(() => {
+            this.setData({
+                loading: false,
+                hiddenHeader: true,
+                hiddenSongs: true
+            })
+        },2000)
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

@@ -1,6 +1,9 @@
+<import src="recommend.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}"/>
+
 <view class="recommend-songs">
     <!-- 头部区域 -->
-    <view class="header">
+    <view class="header" hidden="{{ !hiddenHeader }}">
         <image src="../../static/images/recommendSong/rebg.jpg"></image>
         <view class="date">
             <text class="day">{{ day }}</text>
@@ -10,8 +13,7 @@
         </view>
     </view>
     <!-- 列表区域 -->
-    <view 
-            class="songs">
+    <view class="songs" hidden="{{ !hiddenSongs }}">
         <view class="list-header">
             <text class=" iconfont icon-song-play"></text>
             <text class="allplay">播放全部</text>
@@ -37,6 +39,5 @@
                 </view>
             </view>
         </view>
-
     </view >
 </view>

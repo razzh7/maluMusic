@@ -1,0 +1,136 @@
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="sk-container">
+      <view class="recommend-songs">
+        <view class="header">
+          <image class="sk-image"></image>
+          <view class="date">
+            <text class="day sk-transparent sk-text-14-2857-850 sk-text sk-image">17</text>
+            <text class="interval sk-transparent sk-opacity">/</text>
+            <text class="month sk-transparent sk-text-14-2857-488 sk-text sk-image">10</text>
+            <view class="day-luck sk-transparent sk-text-14-2857-490 sk-text sk-image">查看今日运势</view>
+          </view>
+        </view>
+        <view class="songs">
+          <view class="list-header">
+            <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+            <text class="allplay sk-transparent sk-text-14-2857-312 sk-text sk-image">播放全部</text>
+          </view>
+          <view class="songs-list" data-index="0" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-768 sk-text sk-image">别学我</view>
+                  <view class="author sk-transparent sk-text-25-0000-971 sk-text sk-image">卢卢快闭嘴</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+          <view class="songs-list" data-index="1" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-885 sk-text sk-image">Into my life</view>
+                  <view class="author sk-transparent sk-text-25-0000-538 sk-text sk-image">Say,Z</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+          <view class="songs-list" data-index="2" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-539 sk-text sk-image">Romantic Sunday</view>
+                  <view class="author sk-transparent sk-text-25-0000-111 sk-text sk-image">JISLAND</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+          <view class="songs-list" data-index="3" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-545 sk-text sk-image">하루 끝</view>
+                  <view class="author sk-transparent sk-text-25-0000-713 sk-text sk-image">雪娥</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+          <view class="songs-list" data-index="4" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-431 sk-text sk-image">미련한 사랑</view>
+                  <view class="author sk-transparent sk-text-25-0000-874 sk-text sk-image">JK 金东旭</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+          <view class="songs-list" data-index="5" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-145 sk-text sk-image">春暖花开去见你</view>
+                  <view class="author sk-transparent sk-text-25-0000-461 sk-text sk-image">福禄寿FloruitShow</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+          <view class="songs-list" data-index="6" data-song="[object Object]">
+            <view class="list-main">
+              <view class="left-container">
+                <view class="img-container">
+                  <image class="sk-image"></image>
+                </view>
+                <view class="song-content">
+                  <view class="songs-name sk-transparent sk-text-17-5000-793 sk-text sk-image">风恋歌</view>
+                  <view class="author sk-transparent sk-text-25-0000-242 sk-text sk-image">恋恋故人难</view>
+                </view>
+              </view>
+              <view class="play">
+                <text class="iconfont icon-song-play sk-pseudo sk-pseudo-circle"></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="recommend-songs"></view>
+  </view>
+</template>
