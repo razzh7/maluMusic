@@ -1,0 +1,79 @@
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="video-container">
+      <view class="video-header">
+        <image class="sk-image"></image>
+        <view class="search sk-transparent sk-text-28-3333-677 sk-text" style="border: none; background-position-x: 50%;">搜索歌曲</view>
+        <image class="sk-image"></image>
+      </view>
+      <scroll-view enable-flex="true" scroll-with-animation="true" scroll-x="true" class="video-nav" scroll-into-view="animation58100">
+        <view class="video-nav-tag" id="animation58100">
+          <view class="tag-content active sk-transparent sk-text-14-2857-979 sk-text" data-id="58100" style="border: none;">
+            现场
+          </view>
+        </view>
+        <view class="video-nav-tag" id="animation60100">
+          <view class="tag-content sk-transparent sk-text-14-2857-153 sk-text" data-id="60100">
+            翻唱
+          </view>
+        </view>
+        <view class="video-nav-tag" id="animation1101">
+          <view class="tag-content sk-transparent sk-text-14-2857-110 sk-text" data-id="1101">
+            舞蹈
+          </view>
+        </view>
+        <view class="video-nav-tag" id="animation58101">
+          <view class="tag-content sk-transparent sk-text-14-2857-723 sk-text" data-id="58101">
+            听BGM
+          </view>
+        </view>
+        <view class="video-nav-tag" id="animation262158">
+          <view class="tag-content sk-transparent sk-text-14-2857-716 sk-text" data-id="262158">
+            万有引力
+          </view>
+        </view>
+        <view class="video-nav-tag" id="animation261121">
+          <view class="tag-content sk-transparent sk-text-14-2857-428 sk-text" data-id="261121">
+            告白
+          </view>
+        </view>
+        <view class="video-nav-tag" id="animation259132">
+          <view class="tag-content sk-transparent sk-text-14-2857-247 sk-text" data-id="259132">
+            云村放映厅
+          </view>
+        </view>
+      </scroll-view>
+      <scroll-view refresher-enabled="true" scroll-y="true" class="video-info">
+        <view class="scrollItem">
+          <image class="video sk-image" id="B632F147DDA3DAEFB455B6FA9D20F544"></image>
+          <view class="title" style="border: none;">
+            <text class="sk-transparent sk-text-14-2857-274 sk-text">费玉清爆笑模仿比莉，走出了六七不认的步伐，原来你是这样的小哥</text>
+          </view>
+          <view class="footer">
+            <view>
+              <image class="avatar sk-image"></image>
+              <text class="nickname sk-transparent sk-text-14-2857-644 sk-text">唯一迷小音</text>
+            </view>
+            <view class="comments_praised">
+              <view class="item">
+                <text class="iconfont icon-buoumaotubiao15 sk-pseudo sk-pseudo-circle"></text>
+                <text class="count sk-transparent sk-text-14-2857-942 sk-text">12735</text>
+              </view>
+              <view class="item">
+                <text class="iconfont icon-pinglun1 sk-pseudo sk-pseudo-circle"></text>
+                <text class="count sk-transparent sk-text-14-2857-362 sk-text">560</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="scrollItem">
+          <image class="video sk-image" id="4A0DDAB1D2D4D4F575DC427796CFA3EB"></image>
+          <view class="title" style="border: none;">
+            <text class="sk-transparent sk-text-14-2857-400 sk-text">小伙参加“好声音”说唱阿姆《Lose Yourself》，导师齐转身！</text>
+          </view>
+          <view class="footer"></view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</template>

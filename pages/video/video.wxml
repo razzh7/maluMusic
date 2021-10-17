@@ -1,3 +1,6 @@
+<import src="video.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}"/>
+
 <view class="video-container">
     <view class="video-header">
         <image src="/static/img/video/video.png"></image>
@@ -9,13 +12,14 @@
                  enable-flex
                  scroll-x
                  scroll-into-view="{{ 'animation' + tagId }}"
-                 scroll-with-animation>
+                 scroll-with-animation
+                 hidden="{{ !hiddenvideoTag }}">
         <view id="{{ 'animation' + item.id }}"
               class="video-nav-tag" 
               wx:for="{{ videoTag }}"
               wx:key="id"
               bindtap="currTag"
-              >
+              hidden="{{ !hiddenvideoTag }}">
             <view class="tag-content {{ tagId == item.id ? 'active' : ''}}"
             data-id="{{ item.id }}"
             >
@@ -28,7 +32,8 @@
                  scroll-y
                  bindrefresherrefresh="handleRefresh"
                  refresher-enabled
-                 refresher-triggered="{{ isTriggered }}">
+                 refresher-triggered="{{ isTriggered }}"
+                 hidden="{{ !hiddenVideoInfo }}">
         <view class="scrollItem" 
               wx:for="{{ videoInfo }}"
               wx:key="id">

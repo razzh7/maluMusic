@@ -10,7 +10,10 @@ Page({
         tagId: '', // 标签id
         videoInfo: [], //视频主体数据
         videoId: '', // 缓存视频标签数据
-        isTriggered: false
+        isTriggered: false,
+        loading: true,
+        hiddenvideoTag: false,
+        hiddenVideoInfo: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -20,6 +23,12 @@ Page({
     },
     getVideoTag() { // 获取视频标签数据
         request('/video/group/list').then(res => {
+            setTimeout(() => {
+                this.setData({
+                    loading: false,
+                    hiddenvideoTag: true
+                })
+            }, 2000)
             this.setData({
                 videoTag: res.data.slice(0,14),
                 tagId: res.data.slice(0,14)[0].id // 拿到第一个数组id以便初次渲染激活第一个tag的active
@@ -29,9 +38,15 @@ Page({
     },
     getVideoMain(tagId) { // 获取视频主体资源
         request('/video/group',{ id: tagId }).then(res => {
+            setTimeout(() => {
+                this.setData({
+                    loading: false,
+                    hiddenVideoInfo: true
+                })
+            }, 2000)
             let index = 0,
                 videoInfo = res.datas.map(item => {
-                    item.id = index++;
+                    item.id = index++; // 制造wx:for的key值
                     return item;
                 })
             this.setData({
@@ -45,15 +60,17 @@ Page({
     currTag(e) { // 获取点击标签的id
         let tagId = e.target.dataset.id;
         if(!(tagId in cache)) { // cache没找到相对应的标签tagId !(false) = true
-            wx.showLoading({  // 加载弹框
-                title: '正在加载',
-              })
             this.setData({
                 tagId,
-                videoInfo: []
+                videoInfo: []  // 切换标签时清空数据，给用户更好的体验
             })
-            this.getVideoMain(tagId)
-            // cache["tagId"] = this.data.videoInfo;
+            wx.showLoading({  // 加载弹框
+                title: '正在加载',
+                success: () => {
+                    console.log('触发了吗')
+                    this.getVideoMain(tagId)
+                }
+              })
             return;
         } 
         //cache中找到了相对应的标签tagId
