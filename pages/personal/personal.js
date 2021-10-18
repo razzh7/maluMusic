@@ -39,7 +39,7 @@ Page({
            })
     },
     toLogin() {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/login/login'
         })
     },

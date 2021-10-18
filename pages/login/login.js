@@ -44,7 +44,7 @@ Page({
                 title: '正在登陆',
                 icon: 'loading',
                 success: () => {
-                    wx.reLaunch({
+                    wx.switchTab({
                       url: '/pages/personal/personal',
                     })
                 }

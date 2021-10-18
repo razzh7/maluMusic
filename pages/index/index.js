@@ -71,7 +71,7 @@ Page({
                 hotRank: hotArr
             })
         })
-        this.disposableLoad(); // 显示骨架屏
+            this.disposableLoad(); // 显示骨架屏
     },
     disposableLoad() {
         setTimeout(() => {
@@ -105,6 +105,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
+        console.log(count++)
     },
 
     /**
