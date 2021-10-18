@@ -38,7 +38,9 @@
             <!-- 实时进度条 -->
             <view class="live-process" style="width:{{ processWidth + 'rpx' }}"></view>
             <!-- 小圆点 -->
-            <view class="dot"></view>
+            <view class="dot"
+                  bindtouchmove="handleTragMove"
+                  bindtouchend="handleTragEnd"></view>
         </view>
         <text class="duration-time">{{ durationTime }}</text>
     </view>

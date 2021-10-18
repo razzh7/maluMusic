@@ -42,7 +42,7 @@
         "useCompilerPlugins": false
     },
     "compileType": "miniprogram",
-    "libVersion": "2.19.6",
+    "libVersion": "2.15.0",
     "appid": "wxa3359d5f7c878987",
     "projectname": "maluMusic",
     "debugOptions": {
@@ -54,6 +54,13 @@
         "servePath": ""
     },
     "isGameTourist": false,
+    "skeleton-config": {
+        "global": {
+            "text": {
+                "backgroundColor": "#EEEEEE"
+            }
+        }
+    },
     "condition": {
         "search": {
             "list": []
@@ -72,13 +79,6 @@
         },
         "miniprogram": {
             "list": []
-        }
-    },
-    "skeleton-config": {
-        "global": {
-            "text": {
-                "backgroundColor": "#EEEEEE"
-            }
         }
     }
 }

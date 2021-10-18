@@ -1,6 +1,11 @@
 // pages/player/player.js
 import request from "../../http/http";
-import utils from "../../utils/utils"
+import utils from "../../utils/utils";
+
+let startX = 50,
+    endX = 500,
+    pageMove,
+    isTrag = false;
 Page({
 
     /**
@@ -80,16 +85,20 @@ Page({
             this.setData({
                 songUrl: res.data[0].url
             })
-            this.backgroundAudioManager.onTimeUpdate(utils.throttle(() => { // 监听背景音频播放进度更新事件
+            this.backgroundAudioManager.onTimeUpdate(() => { // 监听背景音频播放进度更新事件
                 let currentTime = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.currentTime),
-                    duration = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.duration),
-                    processWidth = (this.backgroundAudioManager.currentTime / this.backgroundAudioManager.duration) * 542 // 计算进度条
+                    duration = utils.SecondsToMinutesAndSeconds(this.backgroundAudioManager.duration);
+                let processWidth = (this.backgroundAudioManager.currentTime / this.backgroundAudioManager.duration) * 542 // 计算进度条
                 this.setData({
                     currentTime,
-                    duration,
-                    processWidth
+                    duration
                 })
-            },800))
+                if(!isTrag){ // os锁
+                    this.setData({
+                        processWidth
+                    })
+                }
+        })
             this.startPlay(); // 拿到歌词url后直接开始播放
         })
     },
@@ -133,6 +142,15 @@ Page({
         })
         this.getSongUrl(this.data.song.id);
     },
+    handleTragMove(e){
+        isTrag = true; // 移动时开启os锁，防止onTimeUpdate修改processWidth
+        pageMove = e.touches[0].pageX; // 记录用户拖拽的小圆点坐标
+    },
+    handleTragEnd(e) {            
+        isTrag = false; // 用户结束移动，关闭os锁，onTimeUpdate开始修改processWidth
+        this.backgroundAudioManager.seek(pageMove);  // 跳转到用户结束移动的坐标播放        
+},    
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
